@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flodesk</title>
+    <style>
+        body {
+            margin: 0px;
+            height: 100vh;
+            border: 2px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url(task1bg.jpeg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .container {
+            min-width: fit-content;
+            border: 1px solid rgba(0, 0, 0, 0.284);
+            border-radius: 10px;
+            text-align: center;
+            backdrop-filter: blur(7px);
+            padding: 10px;
+        }
+        .heading{
+            color: rgba(240, 248, 255, 0.488);
+        }
+        .heading h1{
+            font-size: 4em;
+        }
+        .heading h4{
+            font-size: 1.5em;
+        }
+        .input-details input{
+            min-width: 300px;
+            min-height: 50px;
+            background-color: rgba(240, 248, 255, 0.585);
+            border-radius: 7px;
+            border :2px solid rgba(248, 244, 244, 0.21);
+            margin: 5px 10px;
+            padding-left: 20px;
+        }
+        .login-button button{
+            min-width: 200px;
+            min-height: 50px;
+            background-color: rgba(0, 0, 0, 0.676);
+            color: aliceblue;
+            font-size: large;
+            margin: 10px;
+            padding: 5px;
+            border-radius: 15px;
+        }
+        .footer{
+            margin: 7px;
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 35px;
+            margin: 10px 25px;
+            margin-bottom: 50px;
+        }
+        .footer a{
+            color: rgba(255, 255, 255, 0.750);
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <div class="heading">
+                <h1>Flodesk</h1>
+                <h4>Welcome back!</h4>
+            </div>
+            <form action="" method="get">
+                <div class="input-details">
+                    <input type="email" name="Email" id="email" placeholder="Enter Your Email"><br>
+                    <input type="password" name="Pass" id="pass" placeholder="Enter Your Password">
+                </div>
+                <div class="login-button">
+                    <button type="submit">
+                        Login to Flodesk
+                    </button>
+                </div>
+            </form>
+            <div class="footer">
+                Not a Member? <a href="#">Sign Up</a><br>
+                <a href="#">Forgot your Password</a><br>
+                By continuing, you agree to Flodesk's <a href="#">term</a><br>
+                and acknowledge you've read our <a href="#">Privacy Policy</a>.
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

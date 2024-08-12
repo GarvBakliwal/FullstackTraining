@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        div {
+            width: 150px;
+            height: 150px;
+            background-color: mediumpurple;
+            border-radius: 50%;
+            animation-name: scale;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes scale {
+            0%,100%{
+                transform: scale(1);
+                opacity: 0.5;
+            }
+            50%{
+                transform: scale(1.5);
+                background-color: orange;
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo voluptatibus veniam animi asperiores, cum deserunt, provident aliquam earum molestiae quasi distinctio nihil, eveniet accusantium quos quae commodi vel nam. Numquam!</p>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo voluptatibus veniam animi asperiores, cum deserunt, provident aliquam earum molestiae quasi distinctio nihil, eveniet accusantium quos quae commodi vel nam. Numquam!</p>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo voluptatibus veniam animi asperiores, cum deserunt, provident aliquam earum molestiae quasi distinctio nihil, eveniet accusantium quos quae commodi vel nam. Numquam!</p> -->
+    <div>
+
+    </div>
+</body>
+
+</html>
+
+
+<!-- 
+display none
+visibility hidden
+opacity 0
+ -->

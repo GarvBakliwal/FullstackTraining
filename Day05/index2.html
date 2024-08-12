@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ::selection {
+            background-color: burlywood;
+        }
+
+        /*::first-letter {
+            color: red;
+            font-size: 5em;
+        }
+
+        ::first-line {
+            color: aquamarine;
+        }*/
+        h1::before{
+            content: 'Mr. ';
+        }
+        h1::after{
+            content: ' 🗿';
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Garv</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos sit nam omnis accusamus tempora, a non quas
+        facilis fugiat mollitia recusandae nostrum nulla dolorum voluptatibus sunt quod est possimus? Quod!</p>
+</body>
+
+</html>

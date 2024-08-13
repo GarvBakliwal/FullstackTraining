@@ -1,16 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+    <style>
+        body {
+            margin: 0px;
+        }
+
+        .wrapper {
+            height: fit-content;
+            width: fit-content;
+            background-image: url(zomato-backgroundimage.jpeg);
+            display: flex;
+            justify-content: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            border: 2px solid;
+        }
+
+        .container {
+            height: fit-content;
+            width: fit-content;
+            padding: 100px 200px;
+            text-align: center;
+            color: aliceblue;
+            border: 2px solid;
+        }
+        .container h1{
+            font-family: 'Verdana';
+            font-style: italic;
+            font-size: 4.4em;
+        }
+        .container h2{
+            font-family: 'Arial';
+            font-weight: 400;
+            font-size: 2em;
+            color: rgba(240, 248, 255, 0.850);
+            margin-top: -20px;
+        }
+        .searchbar {
+            width: fit-content;
+            display: flex;
+            margin: auto;
+            border: 2px solid;
+            padding: 10px 5px;
+            background-color: white;
+            border-radius: 5px;
+        }
+
+        .search-Location {
+            display: flex;
+            border-right: 2px solid rgba(0, 0, 0, 0.194);
+        }
+        .search-Location select{
+            color: rgba(0, 0, 0, 0.285);
+            border: none;
+            padding-right: 90px;
+            margin-right: 10px;
+        }
+        .search-Dishes {
+            display: flex;
+            margin-left: 10px;
+        }
+        .search-Dishes input{
+            padding: 5px;
+            width: 400px;
+            border: none;
+            font-size: 0.8em;
+            font-weight: bold;
+            color: rgba(0, 0, 0, 0.523);
+        }
+        .search-Dishes input::placeholder{
+            color: rgba(0, 0, 0, 0.255);
+        }
     </style>
 </head>
+
 <body>
     <div class="wrapper">
-        
+        <div class="container">
+            <h1>
+                zomato
+            </h1>
+            <h2>
+                Discover the best food & drinks in Lucknow
+            </h2>
+            <div class="searchbar">
+                <div class="search-Location">
+                    <i class="material-icons" style="color: rgba(255, 0, 0, 0.538);">person_pin_circle</i>
+                    <select name="location" id="location">
+                        <option value="lucknow">Lucknow</option>
+                        <option value="delhi">Delhi</option>
+                        <option value="mumbai">Mumbai</option>
+                        <option value="udaipur">Udaipur</option>
+                    </select>
+                </div>
+                <div class="search-Dishes">
+                    <i class="material-icons" style="color: rgba(0, 0, 0, 0.478);">search</i>
+                    <input type="search" name="search-bar" id="search-bar"
+                        placeholder="Search for restraunt,cuisine or dish">
+                </div>
+            </div>
+        </div>
     </div>
 </body>
+
 </html>

@@ -115,3 +115,9 @@
 // let a ='age'
 // console.log(myDetails['firstName'])
 // console.log(myDetails[a])
+
+// INPUT FROM TERMINAL 
+// const ps = require("prompt-sync");
+// const prompt = ps();
+// let name = prompt("Enter : ");
+// console.log(`hello ${name}`);

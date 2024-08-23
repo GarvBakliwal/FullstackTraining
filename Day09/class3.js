@@ -121,8 +121,11 @@
 // console.log(country);
 
 // Destructuring ES6 FEATURE ;
-const pro = ['tv', 'mobile', 'shirt'];
+// const pro = ['tv', 'mobile', 'shirt'];
 // const tv = pro[0];                   BETA MALE MOVE 
 // console.log(tv);
-const [tv, mobile, shirt] = pro;         // CHAD
-console.log(tv, mobile, shirt);
+// const [tv, mobile, shirt] = pro;         // CHAD
+// console.log(tv, mobile, shirt);
+
+const arr = [1, 2, 3, [4, [5, 6]]];
+const [a, b, c, [d, [e, f]]] = arr;

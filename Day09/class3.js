@@ -127,5 +127,5 @@
 // const [tv, mobile, shirt] = pro;         // CHAD
 // console.log(tv, mobile, shirt);
 
-const arr = [1, 2, 3, [4, [5, 6]]];
-const [a, b, c, [d, [e, f]]] = arr;
+// const arr = [1, 2, 3, [4, [5, 6]]];
+// const [a, b, c, [d, [e, f]]] = arr;

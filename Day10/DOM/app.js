@@ -20,10 +20,100 @@
 //     console.log(el.innerText); 
 // }));
 
+
 // document.getElementsByClassName
-const list = document.getElementsByClassName('special');
-console.log(list);
+// const list = document.getElementsByClassName('special');
+// console.log(list);
 
 
 // document.querySelector
+// const list2 = document.querySelector('.special');
+// console.log(list2);
+
+
 // document.querySelectorAll
+// const list3 = document.querySelectorAll('.special');
+// console.log(list3.forEach((Element)=>{
+//     console.log(Element.innerHTML);
+// }));
+
+// HTML Collection RETURN by getElementByTagName and getElemenyByClassName AND NODELIST RETURN BY querySelectorAll method
+
+// READING TEXT FROM ELEMENTS
+// innerText textContent innerHTML properties available on element
+
+// textContent 
+// text content gives the text as it is without applying css or calculations
+// console.log(heading.textContent);
+// heading.textContent = 'dom';
+
+// innertext always preverse the CSS
+// heading.innerText = 'dom2';
+// heading.innerHTML = `<span>Hello</span>`;
+// console.log(document.body.textContent);
+// console.log(document.body.innerText);
+
+// const container = document.querySelector('#container');
+// container.innerHTML = `<h2>Services</h2>`;
+
+
+// reading the href and src attributes of the anchor and img 
+
+// const a = document.querySelector('#address');
+// console.log(a);
+// a.href = "www.x.com";
+// console.log(a);
+
+// const img = document.querySelector('#bear-photo');
+// img.src = '/Users/garv/Desktop/College/Programming/Web Development/CSS/pokeball.png';
+
+
+// NOTE changing style using JS
+// console.log(heading.style);
+// heading.style.color = 'green';
+// heading.style.fontSize = '30px';
+// heading.style.textDecoration = 'underline';
+
+// Changing attributes using JS
+// const input = document.querySelector('#bear');
+// input.setAttribute('placeholder','enter your name');
+
+// console.log(input.getAttribute('placeholder'));
+
+
+// Creating new elements using JS
+
+// first you have to create a new element 
+// const h1 = document.createElement('h1');
+// console.log(h1);
+// second you have to add content to it 
+// h1.innerText = 'GARV';
+// third you have to decide where to place it
+// container.append(h1);
+
+// EVENTS
+const btn = document.querySelector('#btn');
+
+btn.addEventListener('click',()=>{
+    const p = document.createElement('p');
+    p.innerText= `Salaam Garvit Bhaijan`;
+    console.log(p);
+    document.body.prepend(p);
+    // document.body.append(p);
+})
+
+// APPEND add elements to the last of the body
+// PREPEND add elements to the beginning of the body
+
+document.addEventListener('keydown',(event)=>{
+        // console.log(event);
+    if (event.key==='1') {
+        document.body.style.backgroundColor='blue';
+    }
+    else if(event.key==='2'){
+        document.body.style.backgroundColor='red';
+    }
+    else if(event.key==='3'){
+        document.body.style.backgroundColor='green';
+    }
+})

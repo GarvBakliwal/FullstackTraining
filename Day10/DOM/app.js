@@ -92,28 +92,45 @@
 // container.append(h1);
 
 // EVENTS
-const btn = document.querySelector('#btn');
+// const btn = document.querySelector('#btn');
 
-btn.addEventListener('click',()=>{
-    const p = document.createElement('p');
-    p.innerText= `Salaam Garvit Bhaijan`;
-    console.log(p);
-    document.body.prepend(p);
+// btn.addEventListener('click',()=>{
+//     const p = document.createElement('p');
+//     p.innerText= `Salaam Garvit Bhaijan`;
+//     console.log(p);
+//     document.body.prepend(p);
     // document.body.append(p);
-})
+// })
 
 // APPEND add elements to the last of the body
 // PREPEND add elements to the beginning of the body
 
-document.addEventListener('keydown',(event)=>{
-        // console.log(event);
-    if (event.key==='1') {
-        document.body.style.backgroundColor='blue';
-    }
-    else if(event.key==='2'){
-        document.body.style.backgroundColor='red';
-    }
-    else if(event.key==='3'){
-        document.body.style.backgroundColor='green';
-    }
+// document.addEventListener('keydown',(event)=>{
+//         // console.log(event);
+//     if (event.key==='1') {
+//         document.body.style.backgroundColor='blue';
+//     }
+//     else if(event.key==='2'){
+//         document.body.style.backgroundColor='red';
+//     }
+//     else if(event.key==='3'){
+//         document.body.style.backgroundColor='green';
+//     }
+// })
+
+
+// submit event
+const form = document.querySelector('#form');
+const bear = document.getElementById('bear');
+const password = document.getElementById('pass');
+const text = document.getElementById('name');
+const range = document.getElementById('rangeinput');
+form.addEventListener('submit',(event)=>{
+    // to prevent the default behaviour of the form in which it automatically refresh the page when we try to submit the form
+    event.preventDefault();
+    console.log(form);
+    console.log(bear.value);
+    console.log(password.value);
+    console.log(range.value);
+    console.log(text.value);
 })

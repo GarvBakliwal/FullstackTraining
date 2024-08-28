@@ -48,15 +48,15 @@
 
 
 // 5
-const inputForm = document.getElementById('inputForm');
-const inputName = document.getElementById('inputName');
-const inputEmail = document.getElementById('inputEmail');
-const submitBtn = document.getElementById('submitBtn');
+// const inputForm = document.getElementById('inputForm');
+// const inputName = document.getElementById('inputName');
+// const inputEmail = document.getElementById('inputEmail');
+// const submitBtn = document.getElementById('submitBtn');
 
-inputForm.addEventListener('submit',(event)=> {
-    event.preventDefault();
-    inputForm.style.display = "none";
-    const greetings = document.createElement('p');
-    greetings.innerText = `Thank you for submitting, ${inputName.value}`
-    document.body.append(greetings);
-})
+// inputForm.addEventListener('submit',(event)=> {
+//     event.preventDefault();
+//     inputForm.style.display = "none";
+//     const greetings = document.createElement('p');
+//     greetings.innerText = `Thank you for submitting, ${inputName.value}`
+//     document.body.append(greetings);
+// })

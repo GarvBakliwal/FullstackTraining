@@ -141,24 +141,74 @@
 // ERROR HANDLING in async await
 // if we get any error in the try block code , try block directly throw the error to the catch block where we can handle it…
 
-async function fetchCountry() {
-    try {
-        const res = await fetch('https://restcountries.com/v3.1/all');
+// async function fetchCountry() {
+//     try {
+//         const res = await fetch('https://restcountries.com/v3.1/all');
 
-        // throw new Error('Country not found');
+//         // throw new Error('Country not found');
 
-        console.log(res);
-        const data = await res.json()
-        console.log(data);
+//         console.log(res);
+//         const data = await res.json()
+//         console.log(data);
 
-    } catch (error) {
-        console.log(error);
-    }
-}
-fetchCountry();
+//     } catch (error) {
+//         console.log(error);
+//     }
+// }
+// fetchCountry();
 
 // in case arrow function
 // const fetchUser = async() => {
 
 // }
 
+// -----SCOPES------
+
+// GLOBAL
+// const a = 4;
+// let b = 5;
+// var c = 6;
+
+// BLOCK
+// if (true) {
+//     const d = 7;
+//     let e = 8;
+//     var f = 9;
+//     console.log(a, b, c);
+// }
+// console.log(f);
+// NOTE Function
+// function print() {
+//     const firstName = 'Garv';
+//     var lastName = 'Bakliwal';
+//     let clgName = 'Techno';
+// }
+// print();
+// console.log(firstName,lastName,clgName);
+
+// lexical scoping and scope chaining ;
+
+// function f1(){
+//     const greet = 'Hello';
+//     function f2(){
+//         console.log(greet);
+//         function f3(){
+//             console.log(greet);
+//         }
+//         f3();
+//     }
+//     f2();
+// }
+// f1();
+
+
+// closures
+// closures remembers the variables 
+// function greeting(){
+//     const msg = 'hello how are you';
+//     return function(){
+//         console.log(msg);
+//     }
+// }
+// const fn = greeting();
+// fn();

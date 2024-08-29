@@ -60,3 +60,9 @@
 //     greetings.innerText = `Thank you for submitting, ${inputName.value}`
 //     document.body.append(greetings);
 // })
+
+// 6
+const alertBtn = document.getElementById('alertBtn');
+alertBtn.addEventListener('click',()=>{
+    window.alert("Button is Clicked!");
+})

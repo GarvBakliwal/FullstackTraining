@@ -62,7 +62,7 @@
 // })
 
 // 6
-const alertBtn = document.getElementById('alertBtn');
-alertBtn.addEventListener('click',()=>{
-    window.alert("Button is Clicked!");
-})
+// const alertBtn = document.getElementById('alertBtn');
+// alertBtn.addEventListener('click',()=>{
+//     window.alert("Button is Clicked!");
+// })

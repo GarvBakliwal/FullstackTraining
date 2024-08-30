@@ -1,8 +1,11 @@
-import Card from "./Card";
-
+// import Card from "./Card";
+import Product from "./Product";
 function App() {
   return (
-    <Card/>
+    <div>
+      {/* <Card text='Sample Card'/> */}
+    <Product/>
+    </div>
   );
 }
 

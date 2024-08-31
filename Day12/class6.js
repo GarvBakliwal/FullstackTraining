@@ -237,36 +237,36 @@
 
 // ways to create an object 
 // constructor functions
-function animal(name){
-    this.name = name;
+// function animal(name){
+//     this.name = name;
     // this.walk = function(){
     //     console.log(`${name} is walking`);
     // }
-}
+// }
 // we directly set methods on the prototype of the animal which are the available on the 
-animal.prototype.walk = function(){
-    console.log(`${name} is walking`);
-}
+// animal.prototype.walk = function(){
+//     console.log(`${name} is walking`);
+// }
 // ways to call constructor functions
 // always call with new keyword
 
-const rabbit = new animal('Rabbit');
-console.log(rabbit);
-const lion = new animal('Lion')
-console.log(lion);
-console.log(lion.walk());
+// const rabbit = new animal('Rabbit');
+// console.log(rabbit);
+// const lion = new animal('Lion')
+// console.log(lion);
+// console.log(lion.walk());
 
-console.log(rabbit.__proto__);
+// console.log(rabbit.__proto__);
 
-const arr = [1,2,3,4,5];
-console.log(arr);
+// const arr = [1,2,3,4,5];
+// console.log(arr);
 
 // Another way to create an array in js ;
-const arr2 = new Array();
+// const arr2 = new Array();
 // console.log(arr2);
 // directly saving methods on prototype ;
-Array.prototype.laugh = function(){
-    console.log('ha ha');
-}
+// Array.prototype.laugh = function(){
+//     console.log('ha ha');
+// }
 
-console.log(arr2.laugh());
+// console.log(arr2.laugh());

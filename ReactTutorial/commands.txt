@@ -1,0 +1,5 @@
+cd ReactTutorial/REACTCRA/my-app
+npm start
+
+cd ReactTutorial/REACTVITE/vite-project
+npm run dev

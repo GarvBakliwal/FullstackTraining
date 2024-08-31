@@ -2,11 +2,12 @@
     {
         "name": "Macbook Air M1",
         "id": "#MAM1",
-        "price": 99990
+        "price": "99990"
     },
     {
         "name": "Asus TUF F15",
         "id": "#ATF15",
-        "price": 57000
+        "price": "57000"
     }
+    
 ]

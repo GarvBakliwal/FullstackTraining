@@ -1,5 +1,5 @@
 // import Card from "./Card";
-import Product from "./Product";
+import Product from "./Components/Product";
 function App() {
   return (
     <div>

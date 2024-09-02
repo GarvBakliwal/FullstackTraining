@@ -8,6 +8,12 @@ import { FaApple } from "react-icons/fa"; */
 // import Conditional from './Components/Conditional'
 import Header from "./Components/Header";
 import { createContext } from "react";
+import { Routes, Route } from "react-router-dom";
+import Homepage from "./Pages/Homepage";
+import Services from "./Pages/Services";
+import Navbar from "./Components/Navbar";
+import NotFound from "./Components/NotFound";
+import Ref from "./Components/Ref";
 
 function App() {
 
@@ -53,7 +59,14 @@ function App() {
       {/* <Conditional /> */}
 
 
-      <Header />
+      {/* <Header /> */}
+      <Ref />
+      <Navbar />
+      <Routes>
+        <Route path='/' element={<Homepage />} />
+        <Route path="/Services" element={<Services />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
 
     </div>
   )

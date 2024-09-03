@@ -10,6 +10,7 @@ function App() {
     location : "Udaipur"
   }
   const status = Math.round(Math.random());
+  
   return (
     <div>
       {/* <Card text='Sample Card'/> */}

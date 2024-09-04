@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
+
+.btn { 
+    @apply px-8 py-2 text-white bg-blue-500 rounded-md mx-5
+}
 @tailwind utilities;

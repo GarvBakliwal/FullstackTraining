@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy , Suspense } from "react";
 /* import Button from "./Button.jsx" */
 /* import { useState } from "react"; */
 /* import List from "./Components/List"; */
@@ -6,14 +6,19 @@ import React from "react";
 import { FaApple } from "react-icons/fa"; */
 // import Render from "./Components/Render";
 // import Conditional from './Components/Conditional'
-import Header from "./Components/Header";
-import { createContext } from "react";
+// import Header from "./Components/Header";
+// import { createContext } from "react";
 import { Routes, Route } from "react-router-dom";
-import Homepage from "./Pages/Homepage";
-import Services from "./Pages/Services";
+// import Homepage from "./Pages/Homepage";
+const Homepage = lazy(()=>import('./Pages/Homepage'));
+// import Services from "./Pages/Services";
+const Services = lazy(()=>import('./Pages/Services'));
 import Navbar from "./Components/Navbar";
 import NotFound from "./Components/NotFound";
-import Ref from "./Components/Ref";
+import Usememo from "./Components/Usememo";
+// import Ref from "./Components/Ref";
+// import Reducer from "./Components/Reducer";
+const Reducer = lazy(()=>import('./Components/Reducer'));
 
 function App() {
 
@@ -28,7 +33,10 @@ function App() {
     setFirstName('Mahipal');
     console.log(firstName);
   } */
-  console.log(createContext());
+  // console.log(createContext());
+
+  lazy
+
   return (
     <div >
       {/* 
@@ -60,13 +68,17 @@ function App() {
 
 
       {/* <Header /> */}
-      <Ref />
+      {/* <Ref /> */}
       <Navbar />
+      <Suspense fallback={<div>Loading</div>}>
+      <Usememo/>
       <Routes>
         <Route path='/' element={<Homepage />} />
         <Route path="/Services" element={<Services />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/Reducer" element={<Reducer />} />
       </Routes>
+      </Suspense>
 
     </div>
   )

@@ -4,7 +4,7 @@ const Ref = () => {
     const inputRef = useRef(null);
     console.log(inputRef);
     useEffect(()=>{
-        inputRef.current.focus
+        inputRef.current.focus()
     })
     const handleSubmit = (e)=>{
         e.preventDefault();

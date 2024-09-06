@@ -1,9 +1,9 @@
 // READ FILE SYNC
 
-const fs = require('fs');
-const { log } = require('console');
-const os = require('os');
-const path = require('path')
+// const fs = require('fs');
+// const { log } = require('console');
+// const os = require('os');
+// const path = require('path')
 
 // const data = fs.readFileSync('./Node/index.txt','utf-8');
 // console.log(data);
@@ -63,7 +63,7 @@ const path = require('path')
 // log(__filename)
 
 
-const finalPath = path.join(__dirname,'Demo.txt');
-fs.readFile(finalPath,'utf-8',(err,data)=>{
-    log(data)
-})
+// const finalPath = path.join(__dirname,'Demo.txt');
+// fs.readFile(finalPath,'utf-8',(err,data)=>{
+//     log(data)
+// })

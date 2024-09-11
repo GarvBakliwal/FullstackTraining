@@ -2,7 +2,20 @@ const express = require('express')
 const app = express();
 
 const product = require('./products')
+const productRoutes = require('./routes/productRoutes');
+
 app.use(express.json());
+
+// app.use((req,res,next)=>{
+//     console.log("middleware first is running");
+//     next();
+// })
+// app.use((req,res,next)=>{
+//     console.log("middleware second is running");
+//     console.log(`${req.method} ${req.url}`);
+    
+//     next();
+// })
 
 // app.get('/api/v1/getproduct', (req, res) => {
 //     // res.send(product)
@@ -33,18 +46,24 @@ app.use(express.json());
 //     })
 // })
 
-app.delete('/api/v1/deleteproduct/:id', (req, res) => {
-    const id = parseInt(req.params.id)
-    const filterProducts = product.filter((product)=>{
-        return product.id !== id
-    })
-    res.json({
-        data : filterProducts
-    })
-})
+// app.delete('/api/v1/deleteproduct/:id', (req, res) => {
+//     const id = parseInt(req.params.id)
+//     const filterProducts = product.filter((product)=>{
+//         return product.id !== id
+//     })
+//     res.json({
+//         data : filterProducts
+//     })
+// })
 
-
+app.use("/api/v1",productRoutes)
 
 app.listen(3000, () => {
     console.log('server is running');
 })
+
+
+// MIDDLEWARE IN THE EXPRESS
+
+// We can create middleware using app.use() method
+

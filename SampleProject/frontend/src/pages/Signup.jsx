@@ -18,25 +18,26 @@ const Signup = () => {
     };
 
     return (
-        <div>
-            <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col'>
-                <label htmlFor="name">Name</label>
-                <input type="text" {...register('name')} />
+        <div className='h-screen flex justify-center items-center'>
+            <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col border-2 w-80 h-fit px-8 py-10 bg-blue-600 border-blue-300 rounded-2xl'>
+                <h1 className='text-4xl text-center m-0 font-serif'>Register</h1>
+                <label htmlFor="name"></label>
+                <input type="text" placeholder='Name' {...register('name')} className='h-10 my-4 border-2 rounded-full bg-blue-200 placeholder: px-2 ' />
                 {errors.name && <p className='text-red-500'>{errors.name.message}</p>}
 
-                <label htmlFor="email">Email</label>
-                <input type="email" {...register('email')} />
+                <label htmlFor="email"></label>
+                <input type="email" placeholder='Email' {...register('email')} className='h-10 my-4 border-2 rounded-full bg-blue-200 placeholder: px-2 ' />
                 {errors.email && <p className='text-red-500'>{errors.email.message}</p>}
 
-                <label htmlFor="phone">Phone</label>
-                <input type="text" {...register('phone')} />
+                <label htmlFor="phone"></label>
+                <input type="text" placeholder='Phone' {...register('phone')} className='h-10 my-4 border-2 rounded-full bg-blue-200 placeholder: px-2 ' />
                 {errors.phone && <p className='text-red-500'>{errors.phone.message}</p>}
 
-                <label htmlFor="password">Password</label>
-                <input type="password" {...register('password')} />
+                <label htmlFor="password"></label>
+                <input type="password" placeholder='Password' {...register('password')} className='h-10 my-4 border-2 rounded-full bg-blue-200 placeholder: px-2 ' />
                 {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
 
-                <button type="submit">Signup</button>
+                <button type="submit" className='border bg-blue-400 w-fit h-fit px-8 py-1 rounded-full m-auto '>Signup</button>
             </form>
         </div>
     );

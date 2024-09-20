@@ -2,19 +2,29 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import axios from 'axios';
+import { toast } from 'sonner';
 
 const Signup = () => {
     const schema = z.object({
         name: z.string().min(1, "Name is required").max(40, "Name cannot exceed 40 characters"),
         email: z.string().email("Invalid email format"),
         phone: z.string().min(10, "Phone number must be at least 10 digits").max(15, "Phone number cannot exceed 15 digits"),
-        password: z.string().min(6, "Password must be at least 6 characters")
+        password: z.string().min(6, "Password must be at least 6 characters").regex(/[0-9]/,"Password must contain atleast one Number").regex(/[A-Z]/,"Password must contain atleast one Uppercase letter").regex(/[a-z]/,"Password must contain atleast one Lowercase letter").regex(/[\W_]/,"Password must contain atleast one Special Character")
     });
 
     const { register, formState: { errors }, handleSubmit } = useForm({ resolver: zodResolver(schema) });
 
-    const onSubmit = (data) => {
-        console.log(data);
+    const onSubmit = async (data) => {
+        // console.log(data);
+        try {
+            const response = await axios.post('http://localhost:3000/api/register',data);
+            toast.success("User registered Successfully");
+        } catch (error) {
+            // console.log(error.response.data);
+            toast.error(error.response.data);
+        }
+
     };
 
     return (

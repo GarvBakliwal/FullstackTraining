@@ -1,4 +1,4 @@
-/* * {
+* {
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
@@ -209,4 +209,4 @@ body {
 .container.active .toggle-right{
     transform: translateX(200%);
 
-} */
+}

@@ -36,13 +36,18 @@ const userSchema = new mongoose.Schema({
             message: 'Password must contain 1 Uppercase, 1 Lowercase, 1 Number & 1 Symbol',
         },
     },
+    role: {
+        type: String,
+        enum: ['admin', 'user'],
+        default: 'user'
+    },
 });
 
-userSchema.pre('save',async function(next){
+userSchema.pre('save', async function (next) {
     // if password is not modified we dont need to hash the password again
     if (!this.isModified('password')) next();
     // it is modified hash the password again
-    this.password = await bcrypt.hash(this.password,12)
+    this.password = await bcrypt.hash(this.password, 12)
 })
 
 // NOTE this keyword points to the document we are going to save in the DB

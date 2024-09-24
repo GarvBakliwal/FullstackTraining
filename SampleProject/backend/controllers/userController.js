@@ -1,7 +1,7 @@
 
 const User = require('./../models/userModel')
 const bcrypt = require('bcrypt')
-
+const jwt = require('jsonwebtoken')
 exports.register = async (req, res) => {
 
     //check if user already exists ..
@@ -10,7 +10,7 @@ exports.register = async (req, res) => {
         const isExistingUser = await User.findOne({ email });
 
         if (isExistingUser) {
-            res.status(400).send("User already exists")
+            res.status(400).send("User already exists,Please try with different Email")
         }
 
         const user = await User.create(req.body)
@@ -22,26 +22,33 @@ exports.register = async (req, res) => {
             })
         }
     } catch (error) {
-        res.status(400).json({message:error});
+        res.status(400).json({ message: error });
     }
 }
 
-exports.login = async (req,res)=>{
+exports.login = async (req, res) => {
     try {
-        const {email,password} = req.body;
-        const user = await User.findOne({email})
+        const { email, password } = req.body;
+        const user = await User.findOne({ email });
         console.log(user);
         if (!user) {
             return res.status(400).send('User is not registered, Please register and try again')
         }
-        const isPasswordMatch = await bcrypt.compare(password,user.password);
+        const isPasswordMatch = await bcrypt.compare(password, user.password);
         if (!isPasswordMatch) {
             return res.status(400).send('Password do not Match')
         }
+        const token = jwt.sign({
+            id: user._id,
+            role: user.role,
+            name: user.name
+        }, 'this-is-a-string', { expiresIn: '30d' })
+
         res.status(200).json({
-            message:"Login Successful"
+            message: "Login Successful",
+            token
         })
     } catch (error) {
-        res.status(400).json({message:error});
+        res.status(400).json({ message: error });
     }
 }

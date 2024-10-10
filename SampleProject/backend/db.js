@@ -1,13 +1,14 @@
-const mongoose = require('mongoose') ;
+const mongoose = require('mongoose');
 const colors = require('colors')
+require('dotenv').config()
 
-const dbConnect = async () => {
+const dbConnect = async() => {
   try {
-    const conn = await mongoose.connect('mongodb://localhost:27017/shoppingApp')
-    console.log(colors.inverse('Connection is Successfull'))
+    const connection = await mongoose.connect(`${process.env.MONGODB_URI}`);
+    console.log(colors.blue('Connection Successfull'))
   } catch (error) {
-    console.log(error)
+    console.log(colors.red(error))
   }
-}
+};
 
 module.exports = dbConnect ;

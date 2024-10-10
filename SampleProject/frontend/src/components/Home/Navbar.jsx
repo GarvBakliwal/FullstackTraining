@@ -7,19 +7,15 @@ import { Link } from 'react-router-dom';
 import Navitems from './Navitems';
 import { NavData } from './data';
 import { GoSignOut } from "react-icons/go";
-import { logout } from '../../redux/userSlice';
-import { useDispatch , useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import {logout} from './../../redux/userSlice'
 function Navbar() {
-  const {totalQuantity} = useSelector((state)=>state.cart)
-  console.log(totalQuantity)
  const name = localStorage.getItem('name')
-const dispatch = useDispatch()
-const navigate = useNavigate()
-const handleLogOut  = async() => {
-await  dispatch(logout())
-navigate('/login')
-}
+ const dispatch = useDispatch()
+ const {totalQuantity} = useSelector((state)=>state.cart)
+ const handleLogOut = () => {
+  dispatch(logout())
+ }
   return (
     <header className="p-4 sticky top-0 z-50  bg-white border border-gray-200">
       <div>
@@ -52,7 +48,8 @@ navigate('/login')
               <span className="text-xs font-medium hover:underline transition-all duration-200">
                 Cart 
               </span>
-             {totalQuantity > 0 ? <span  className='absolute rounded-full bg-green-500 text-xs p-1 top-[-11px] '>{totalQuantity}</span> : null}
+{totalQuantity > 0 ? <span className='h-4 w-4 flex top-[-11px] right-[2px] items-center text-[9px] p-1 rounded-full justify-center bg-lime-500 absolute'>{totalQuantity}</span> : null }
+ 
              </Link>
             
            

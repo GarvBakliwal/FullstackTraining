@@ -6,23 +6,23 @@ import { FaGoogle, FaUser, FaLock } from 'react-icons/fa';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { useNavigate , useLocation } from 'react-router-dom';
-
+import { CircularProgress } from '@mui/material';
 
 function Login() {
   const { handleSubmit, register, formState: { errors } } = useForm(); 
-  const {role} = useSelector((state)=>state.user)
+  const {role , loading} = useSelector((state)=>state.user)
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
   console.log(location.pathname)
-
+console.log(role)
   const [showPassword, setShowPassword] = useState(false);
 
   useEffect(()=>{
     if(role ==='user' && location.pathname !== '/' ){
    navigate('/')
     }
-     if(role==='admin' && location.pathname !== 'dashboard'){
+     if(role ==='admin' && location.pathname !== 'dashboard'){
       navigate('/dashboard')
     }
 
@@ -81,14 +81,14 @@ function Login() {
             className="bg-black px-8 py-2 rounded-md w-full mt-3 text-white"
             type="submit"
           >
-            Login
+           {loading ? <CircularProgress size={20} className='text-white'/> : 'Login'}
           </button>
         </form>
 
       
         <button
           className="flex items-center justify-center mt-5 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded w-full"
-         onClick={()=>window.location.href="http://localhost:3000/api/auth/google"}
+         onClick={()=> window.location.href = "http://localhost:3000/api/auth/google"}
         >
           <FaGoogle className="mr-2" />
           Login with Google

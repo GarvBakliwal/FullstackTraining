@@ -4,9 +4,11 @@ import { addToCart } from '../../redux/cartSlice';
 function ProductCard({ product }) {
   console.log(product);
   const dispatch = useDispatch();
+  console.log(product.id)
     const handleAddToCart = () => {
+
   dispatch(addToCart({
-    
+      id : product.id,
       name : product.name,
       price : product.price ,
       image : product.image,
@@ -29,8 +31,8 @@ function ProductCard({ product }) {
           bottom-0
           opacity-0 w-full  translate-y-full  group-hover:opacity-100 transition-all duration-200 ease-in-out group-hover:-translate-y-0"
         >
-          <div  className="mt-auto">
-            <button className="bg-black bg-opacity-50 px-6 py-4 w-full text-white" onClick={handleAddToCart}>
+          <div className="mt-auto">
+            <button onClick={handleAddToCart} className="bg-black bg-opacity-50 px-6 py-4 w-full text-white">
               Add to Cart
             </button>
           </div>

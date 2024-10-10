@@ -1,64 +1,65 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose') 
 const validator = require('validator');
-const bcrypt = require('bcrypt') ;
+const bcrypt =  require('bcrypt');
 const userSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: [true, 'Name is required'],
-    maxLength: 40,
-  },
-  email: {
-    type: String,
-    required: [true, 'Email is required'],
-    unique: true,
-    validate: {
-      validator: validator.isEmail,
-      message: 'Please enter a Valid Email',
-    },
-  },
-  phone: {
-    type: String,
-   
-  },
-  password: {
-    type: String,
-   
-    validate: {
-      validator: function (value) {
-   if(this.googleId) return true ;
-        return validator.isStrongPassword(value, {
-          minLength: 8,
-          minLowercase: 1,
-          minUppercase: 1,
-          minNumbers: 1,
-          minSymbols: 1,
-        });
-      },
-      message: 'Password must contain 1 uppercase , 1 lowercase , 1 number , 1 symbol ',
-    },
-  },
-  role : {
-    type : String,
-    enum : ['admin', 'user'],
-    default : 'admin'
-  },
-  googleId : {
-    type : String,
-    unique : true,
-    sparse : true
-  }
-});
+     name : {
+        type : String ,
+        required : [true , "Name is Required"],
+        maxLength : [40 , "Name cannot be exceed 40 Characters"] ,
+     },
+     email : {
+        type : String ,
+        required : [true , "Email is Required"],
+        unique : true ,
+        validate : {
+        validator : function(value){
+            return validator.isEmail(value)
+        },
+        message : "Please Enter a Valid Email"
+       }
+     },
+     phone : {
+        type : String,
+        unique : true
+     },
+     password : {
+        type : String, 
+        validate : {
+            validator : function (value){
+                if(this.googleId) return true ;
+                return validator.isStrongPassword(value,{
+                    minLength: 8, minLowercase: 1, minUppercase: 1, minNumbers: 1, minSymbols: 1
+                })
+            },
+            message : "Password must contain 1 uppercase , 1 lowercase , 1 Symbol ,1 Number"
+        }
+     },
+     role : {
+        type : String ,
+       enum : ['admin' , 'user'] ,
+       default : 'user' 
+     } ,
 
-userSchema.pre('save', async function(next){
-  //if password is not modified we don't need to hash the password again
-  if(!this.isModified('password')) next()
-//if it is modified hash the password again 
-this.password =  await bcrypt.hash(this.password , 12)
-  next()
+     googleId : {
+        type : String ,
+        unqiue : true ,
+        sparse : true //null when the google id is not available when we signup the user
+     }
 })
 
-//NOTE this keyword points to the document we are going to save in the db.
+userSchema.pre('save', async function(next){
+    console.log('doc save')
+    if(!this.isModified('password') )
+    {
+  return next()
+    }
+    
+    this.password = await bcrypt.hash(this.password , 12)
+   
+    next()
+})
 
-const User = mongoose.model('User', userSchema);
 
-module.exports = User;
+const User = mongoose.model("User", userSchema) ;
+
+module.exports = User ;

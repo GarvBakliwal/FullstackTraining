@@ -1,17 +1,26 @@
-//NOTE step1
-
 import { configureStore } from "@reduxjs/toolkit";
+import counterReducer from './counterSlice'
 import userReducer from './userSlice'
 import productReducer from './productSlice'
-import CartReducer from './cartSlice'
+import cartReducer from './cartSlice'
+import { saveState, loadState } from "./localStorage";
 const store = configureStore({
     reducer : {
-      user : userReducer,
-      product : productReducer,
-      cart : CartReducer
+        count : counterReducer,
+        user : userReducer,
+        product : productReducer,
+        cart :  cartReducer
+    } ,
+
+    preloadedState : {
+        cart : loadState()
     }
 })
- 
-console.log(store)
 
-export default store
+console.log(store.getState()) 
+store.subscribe(()=>{
+    saveState(store.getState().cart)
+})
+console.log(store) ;
+export default store ;
+

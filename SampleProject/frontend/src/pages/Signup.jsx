@@ -4,7 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useDispatch, useSelector } from 'react-redux';
 import { Register } from '../redux/userSlice';
-
+import { CircularProgress } from '@mui/material';
 import { FaUser, FaEnvelope, FaPhone, FaLock } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
@@ -24,14 +24,14 @@ const schema = z.object({
 function Signup() {
   const { loading } = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  const navigate = useNavigate() ;
+ const navigate = useNavigate();
   const { handleSubmit, register, formState: { errors } } = useForm({
     resolver: zodResolver(schema),
   });
 
-  const onSubmit = async(data) => {
-    await dispatch(Register(data));
-    navigate('/login')
+  const onSubmit =async (data) => {
+   await dispatch(Register(data));
+      navigate('/login')
   };
 
   return (
@@ -88,11 +88,11 @@ function Signup() {
             className="bg-black px-8 py-2 rounded-md w-full mt-3 text-white"
             type="submit"
           >
-            Signup
+            {loading ? <CircularProgress size={24} className="text-white" /> : "Signup"}
           </button>
         </form>
 
-        {/* Already have an account section */}
+     
         <div className="text-center mt-4">
           <p className="text-gray-600">
             Already have an account?{" "}

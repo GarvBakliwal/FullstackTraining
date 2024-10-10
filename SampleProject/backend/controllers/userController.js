@@ -1,85 +1,85 @@
-const User = require('./../models/userModel');
+const User = require('../models/userModel');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
-exports.register = async (req, res) => {
+// User sign up controller
+exports.signUp = async (req, res, next) => {
   try {
     const { email } = req.body;
     const isExistingUser = await User.findOne({ email });
 
+    // Check if user already exists
     if (isExistingUser) {
-      return res
-        .status(400)
-        .send('User already exists , Please try with different Email');
+      throw new Error('User already exists');
     }
+
+    // Create the user
     const user = await User.create(req.body);
     if (user) {
       return res.status(201).json({
-        message: 'User created Successfully',
+        message: 'User registered successfully',
         data: user,
       });
     }
-  } catch (error) {
-    res.status(400).send(error);
+  } catch (err) {
+    next(err);
   }
 };
 
-exports.login = async (req, res) => {
+// User login controller
+exports.login = async (req, res, next) => {
   try {
-    //step1 check email if user exists
     const { email, password } = req.body;
     const user = await User.findOne({ email });
-    console.log(user);
+
+    // Check if user exists
     if (!user) {
-      return res
-        .status(400)
-        .send('User is not registered , Please register and try again');
+      throw new Error("User is not registered");
     }
-    //step2 match the password
+
+    // Check if the password matches
     const isPasswordMatch = await bcrypt.compare(password, user.password);
-
     if (!isPasswordMatch) {
-      return res.status(400).send('Password do not match');
+      throw new Error("Password does not match, please try again");
     }
 
-    //generate a token and send it to response so we can get in the frontend
+    // Generate JWT and return it
     const token = jwt.sign(
-      {
-        id: user._id,
-        role: user.role,
-        name: user.name,
-      },
-      'this-is-a-string',
+      { id: user._id, name: user.name, role: user.role },
+      process.env.JWT_SECRET || 'fallback-secret', // Use env variable
       { expiresIn: '30d' }
     );
 
-    res.status(200).json({
-      message: 'Login Successfull',
+    return res.status(200).json({
+      message: "Login successful",
       token,
     });
   } catch (error) {
-    res.status(400).send(error);
+    next(error);
   }
 };
 
-// model=>controller=>routes=>app.js
-
-exports.GoogleAuth = async (req, res) => {
+// Google OAuth authentication controller
+exports.googleAuth = async (req, res, next) => {
   try {
+    // Ensure req.user exists
+    if (!req.user) {
+      throw new Error('User information is missing from Google authentication');
+    }
+
     const user = req.user;
+
+    // Generate JWT for the authenticated user
     const token = jwt.sign(
-      {
-        id: user._id,
-        role: user.role,
-        name: user.name,
-      },
-      'this-is-a-string',
+      { id: user._id, name: user.name, role: user.role },
+      process.env.JWT_SECRET || 'fallback-secret', // Use env variable
       { expiresIn: '30d' }
     );
-    res.redirect(
-      `http://localhost:5173/auth/google/callback?token=${token}&role=${user.role}&name=${user.name}`
-    );
+
+    // Redirect with the token and user details in the query string
+    res.redirect(`${process.env.REDIRECT_URL}?token=${token}&role=${user.role}&id=${user._id}`);
   } catch (error) {
-    next(error);
+    next(error); // Pass error to error-handling middleware
   }
 };

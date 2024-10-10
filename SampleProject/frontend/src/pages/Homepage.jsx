@@ -3,13 +3,11 @@ import Navbar from '../components/Home/Navbar'
 import Hero from '../components/Home/Hero'
 import Banner from '../components/Home/Banner'
 import GridSection from '../components/Home/GridSection'
-
-import {useDispatch} from 'react-redux'
-
 import { fetchProduct } from '../redux/productSlice'
+import {useDispatch} from 'react-redux'
 import ProductList from '../components/Home/ProductList'
 import FitGuide from '../components/Home/FitGuide'
-
+import Footer from '../components/Home/Footer'
 function Homepage() {
   const dispatch = useDispatch()
   useEffect(()=>{
@@ -18,13 +16,14 @@ function Homepage() {
 
   return (
     <div>
-   <Navbar/>
+
    <Hero/>
    <GridSection/>
-   <FitGuide/>
-   <Banner/>
-   <ProductList/>
   
+   <ProductList/>
+    <Banner/>
+    <FitGuide/>
+    <Footer/>
     </div>
   )
 }
